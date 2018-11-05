@@ -41,8 +41,10 @@
             this.betterListView1 = new ComponentOwl.BetterListView.BetterListView();
             this.betterListViewColumnHeader1 = new ComponentOwl.BetterListView.BetterListViewColumnHeader();
             this.betterListViewColumnHeader2 = new ComponentOwl.BetterListView.BetterListViewColumnHeader();
+            this.betterListViewColumnHeader6 = new ComponentOwl.BetterListView.BetterListViewColumnHeader();
             this.betterListViewColumnHeader3 = new ComponentOwl.BetterListView.BetterListViewColumnHeader();
             this.betterListViewColumnHeader4 = new ComponentOwl.BetterListView.BetterListViewColumnHeader();
+            this.betterListViewColumnHeader5 = new ComponentOwl.BetterListView.BetterListViewColumnHeader();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.betterListView1)).BeginInit();
             this.SuspendLayout();
@@ -137,8 +139,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.betterListView1.Columns.Add(this.betterListViewColumnHeader1);
             this.betterListView1.Columns.Add(this.betterListViewColumnHeader2);
+            this.betterListView1.Columns.Add(this.betterListViewColumnHeader6);
             this.betterListView1.Columns.Add(this.betterListViewColumnHeader3);
             this.betterListView1.Columns.Add(this.betterListViewColumnHeader4);
+            this.betterListView1.Columns.Add(this.betterListViewColumnHeader5);
             this.betterListView1.ContextMenuStripItems = this.contextMenuStrip1;
             this.betterListView1.Location = new System.Drawing.Point(12, 34);
             this.betterListView1.MultiSelect = false;
@@ -149,18 +153,28 @@
             // betterListViewColumnHeader1
             // 
             this.betterListViewColumnHeader1.Name = "betterListViewColumnHeader1";
+            this.betterListViewColumnHeader1.Style = ComponentOwl.BetterListView.BetterListViewColumnHeaderStyle.Sortable;
             this.betterListViewColumnHeader1.Text = "Name";
             this.betterListViewColumnHeader1.Width = 400;
             // 
             // betterListViewColumnHeader2
             // 
             this.betterListViewColumnHeader2.Name = "betterListViewColumnHeader2";
+            this.betterListViewColumnHeader2.Style = ComponentOwl.BetterListView.BetterListViewColumnHeaderStyle.Sortable;
             this.betterListViewColumnHeader2.Text = "PID";
             this.betterListViewColumnHeader2.Width = 80;
+            // 
+            // betterListViewColumnHeader6
+            // 
+            this.betterListViewColumnHeader6.Name = "betterListViewColumnHeader6";
+            this.betterListViewColumnHeader6.SortMethod = ComponentOwl.BetterListView.BetterListViewSortMethod.Key;
+            this.betterListViewColumnHeader6.Style = ComponentOwl.BetterListView.BetterListViewColumnHeaderStyle.Sortable;
+            this.betterListViewColumnHeader6.Text = "内存(专用)";
             // 
             // betterListViewColumnHeader3
             // 
             this.betterListViewColumnHeader3.Name = "betterListViewColumnHeader3";
+            this.betterListViewColumnHeader3.Style = ComponentOwl.BetterListView.BetterListViewColumnHeaderStyle.Sortable;
             this.betterListViewColumnHeader3.Text = "Path";
             this.betterListViewColumnHeader3.Width = 600;
             // 
@@ -169,6 +183,11 @@
             this.betterListViewColumnHeader4.Name = "betterListViewColumnHeader4";
             this.betterListViewColumnHeader4.Text = "Description";
             this.betterListViewColumnHeader4.Width = 200;
+            // 
+            // betterListViewColumnHeader5
+            // 
+            this.betterListViewColumnHeader5.Name = "betterListViewColumnHeader5";
+            this.betterListViewColumnHeader5.Text = "Company";
             // 
             // MainForm
             // 
@@ -206,6 +225,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemKill;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenLocation;
+        private ComponentOwl.BetterListView.BetterListViewColumnHeader betterListViewColumnHeader5;
+        private ComponentOwl.BetterListView.BetterListViewColumnHeader betterListViewColumnHeader6;
     }
 }
 

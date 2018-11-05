@@ -76,9 +76,24 @@ namespace ProcessView
                 var filePath = WinAPI.GetExecutablePath(p);
 
                 var item = new BetterListViewItem(WinAPI.GetFileIconImage(filePath), p.ProcessName);
-                item.SubItems.Add(p.Id.ToString());
+
+                var idItem = new BetterListViewSubItem(p.Id.ToString());
+                idItem.Key = new PIDComparable() { PID = p.Id };
+                item.SubItems.Add(idItem);
+
+                var memory = p.PrivateMemorySize64 / 1024;
+                var memoryItem = new BetterListViewSubItem(memory.ToString("N0") + "K");
+                memoryItem.Key = new MemoryComparable() { Memory = memory };
+                item.SubItems.Add(memoryItem);
+
                 item.SubItems.Add(filePath);
-                //item.SubItems.Add(p.MainModule.FileVersionInfo.FileDescription);
+
+                if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
+                {
+                    var info = FileVersionInfo.GetVersionInfo(filePath);
+                    item.SubItems.Add(info.FileDescription);
+                    item.SubItems.Add(info.CompanyName);
+                }
 
                 if (knownProcesses.Contains(p.ProcessName.ToUpper()))
                 {
@@ -172,7 +187,7 @@ namespace ProcessView
                         }
                     case "location":
                         {
-                            var file = item.SubItems[2].Text.ToString();
+                            var file = item.SubItems[3].Text.ToString();
                             if (!string.IsNullOrEmpty(file) && File.Exists(file))
                             {
                                 Process.Start("explorer.exe", "/select," + file);
@@ -196,6 +211,26 @@ namespace ProcessView
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             ReLoadProcesses();
+        }
+    }
+
+    public class MemoryComparable : IComparable
+    {
+        public long Memory { get; set; }
+
+        public int CompareTo(object other)
+        {
+            return (int)(this.Memory - ((MemoryComparable)other).Memory);
+        }
+    }
+
+    public class PIDComparable : IComparable
+    {
+        public int PID { get; set; }
+
+        public int CompareTo(object other)
+        {
+            return this.PID - ((PIDComparable)other).PID;
         }
     }
 }
